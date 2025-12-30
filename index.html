@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediverse - Your Smart Health Universe</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Chart.js for Vital Tracker Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">MEDIVERSE</h1>
+            <button class="btn-logout" id="logoutBtn" style="display: none;">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="section" id="loginSection">
+        <div class="container">
+            <div class="login-card">
+                <h2>Welcome to Mediverse</h2>
+                <p class="tagline">"Your Smart Health Universe – Emergency Ready"</p>
+                <button class="btn btn-google" id="googleSignInBtn">
+                    <span>🔐</span> Sign in with Google
+                </button>
+                <p class="note">Firebase Auth placeholder - Click to simulate login</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard (Hidden until login) -->
+    <div id="dashboard" style="display: none;">
+        
+        <!-- Health Data Form Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">📋 Your Health Profile</h2>
+                <form id="healthForm" class="health-form">
+                    
+                    <!-- Personal Info -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" required placeholder="Enter your age">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bloodGroup">Blood Group *</label>
+                        <select id="bloodGroup" required>
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+
+                    <!-- Medical Info -->
+                    <div class="form-group">
+                        <label for="allergies">Allergies</label>
+                        <textarea id="allergies" rows="2" placeholder="e.g., Penicillin, Peanuts, None"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chronicDiseases">Chronic Diseases</label>
+                        <textarea id="chronicDiseases" rows="2" placeholder="e.g., Diabetes, Hypertension, Asthma, None"></textarea>
+                    </div>
+
+                    <!-- Vital Signs -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bloodPressure">Blood Pressure (mmHg)</label>
+                            <input type="text" id="bloodPressure" placeholder="e.g., 120/80">
+                        </div>
+                        <div class="form-group">
+                            <label for="bloodSugar">Blood Sugar (mg/dL)</label>
+                            <input type="number" id="bloodSugar" placeholder="e.g., 100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" placeholder="e.g., 70">
+                    </div>
+
+                    <!-- Emergency Contacts -->
+                    <div class="form-group">
+                        <label for="emergencyContact1">Emergency Contact 1 *</label>
+                        <input type="text" id="emergencyContact1" required placeholder="Name: Phone Number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emergencyContact2">Emergency Contact 2</label>
+                        <input type="text" id="emergencyContact2" placeholder="Name: Phone Number">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">💾 Save Health Profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Upload Medical Reports Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">📄 Upload Medical Reports</h2>
+                <div class="upload-area">
+                    <input type="file" id="reportUpload" accept=".pdf,.jpg,.jpeg,.png" multiple>
+                    <label for="reportUpload" class="upload-label">
+                        <span class="upload-icon">📁</span>
+                        <span>Click to upload PDF or Images</span>
+                    </label>
+                    <p class="note">Firebase Storage placeholder - Files will be stored locally</p>
+                </div>
+                <div id="uploadedFiles" class="uploaded-files"></div>
+            </div>
+        </section>
+
+        <!-- Emergency QR Code Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">🚨 Emergency QR Code</h2>
+                <div class="qr-container">
+                    <div id="qrcode" class="qr-code"></div>
+                    <p class="qr-note">Scan this QR code to access emergency health data</p>
+                    <button class="btn btn-secondary" id="generateQRBtn">Generate QR Code</button>
+                    <button class="btn btn-secondary" id="viewEmergencyBtn">View Emergency Page</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Health Advisor Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">🤖 AI Health Advisor</h2>
+                <div class="ai-advisor">
+                    <textarea id="aiQuery" rows="3" placeholder="Ask about your health... e.g., 'What should I do about my high blood pressure?'"></textarea>
+                    <button class="btn btn-primary" id="askAIBtn">Get AI Advice</button>
+                    <div id="aiResponse" class="ai-response"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vital Tracker Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">📊 Vital Tracker</h2>
+                <div class="vital-tracker">
+                    <div class="vital-input">
+                        <h3>Add New Reading</h3>
+                        <div class="form-row">
+                            <input type="number" id="newBP" placeholder="BP (e.g., 120)">
+                            <input type="number" id="newSugar" placeholder="Sugar (mg/dL)">
+                            <input type="number" id="newWeight" placeholder="Weight (kg)">
+                        </div>
+                        <button class="btn btn-secondary" id="addVitalBtn">Add Reading</button>
+                    </div>
+                    <div class="charts">
+                        <canvas id="vitalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medicine Reminders Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">💊 Medicine Reminders</h2>
+                <div class="medicine-reminders">
+                    <div class="reminder-form">
+                        <input type="text" id="medicineName" placeholder="Medicine Name">
+                        <input type="time" id="medicineTime">
+                        <button class="btn btn-secondary" id="addReminderBtn">Add Reminder</button>
+                    </div>
+                    <div id="reminderList" class="reminder-list"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Emergency Page (Hidden, accessed via QR or button) -->
+    <div id="emergencyPage" style="display: none;">
+        <div class="emergency-overlay">
+            <div class="emergency-card">
+                <h1 class="emergency-title">⚠️ EMERGENCY INFORMATION</h1>
+                <button class="btn-close" id="closeEmergencyBtn">✕</button>
+                <div id="emergencyData" class="emergency-data">
+                    <!-- Emergency data will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mediverse. Your health data is stored securely.</p>
+            <p class="note">Hackathon MVP - Firebase placeholder for Auth, Firestore, Storage</p>
+        </div>
+    </footer>
+
+    <!-- Link to JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

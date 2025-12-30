@@ -1,0 +1,506 @@
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==================== NAVIGATION BAR ==================== */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #667eea;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-logout {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-logout:hover {
+    background: #c82333;
+}
+
+/* ==================== SECTIONS ==================== */
+.section {
+    padding: 40px 0;
+}
+
+.section-alt {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.section-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ==================== LOGIN SECTION ==================== */
+#loginSection {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-card h2 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.tagline {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.btn-google {
+    background: white;
+    color: #333;
+    border: 2px solid #ddd;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.btn-google:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.note {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* ==================== FORMS ==================== */
+.health-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* ==================== UPLOAD AREA ==================== */
+.upload-area {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.upload-area input[type="file"] {
+    display: none;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 40px;
+    border: 3px dashed #667eea;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-label:hover {
+    background: #f8f9ff;
+    border-color: #5568d3;
+}
+
+.upload-icon {
+    font-size: 3rem;
+}
+
+.uploaded-files {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.file-item {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ==================== QR CODE SECTION ==================== */
+.qr-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.qr-code {
+    display: inline-block;
+    padding: 20px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.qr-note {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* ==================== AI ADVISOR ==================== */
+.ai-advisor {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.ai-advisor textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+.ai-response {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9ff;
+    border-left: 4px solid #667eea;
+    border-radius: 8px;
+    min-height: 100px;
+}
+
+.ai-response h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+/* ==================== VITAL TRACKER ==================== */
+.vital-tracker {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.vital-input {
+    margin-bottom: 30px;
+}
+
+.vital-input h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.vital-input input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.charts {
+    margin-top: 30px;
+}
+
+/* ==================== MEDICINE REMINDERS ==================== */
+.medicine-reminders {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.reminder-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.reminder-form input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.reminder-list {
+    margin-top: 20px;
+}
+
+.reminder-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #667eea;
+}
+
+.reminder-item button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ==================== EMERGENCY PAGE ==================== */
+.emergency-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.emergency-card {
+    background: #dc3545;
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(220, 53, 69, 0.5);
+}
+
+.emergency-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    color: #dc3545;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.emergency-data {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.emergency-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.emergency-item:last-child {
+    margin-bottom: 0;
+}
+
+.emergency-label {
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.emergency-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 0;
+    text-align: center;
+    color: #666;
+    margin-top: 40px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .reminder-form {
+        flex-direction: column;
+    }
+
+    .emergency-card {
+        padding: 25px;
+    }
+
+    .emergency-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .login-card {
+        padding: 30px 20px;
+    }
+}
